@@ -151,9 +151,10 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 }
 
 /* Rotating words */
-.rotator { display: inline-block; position: relative; min-width: 9ch; color: var(--rose); font-style: italic; }
-.rotator span { position: absolute; left: 0; top: 0; white-space: nowrap; opacity: 0; transform: translateY(12px); transition: opacity .5s, transform .5s; }
-.rotator span.on { position: relative; opacity: 1; transform: none; }
+.rotator { display: inline-block; position: relative; min-width: 9ch; max-width: 100%; color: var(--rose); font-style: italic; }
+.rotator span { position: absolute; left: 0; top: 0; max-width: 100%; white-space: nowrap; opacity: 0; transform: translateY(12px); transition: opacity .5s, transform .5s; }
+/* The visible word is in-flow and allowed to wrap, so long phrases never clip on small screens. */
+.rotator span.on { position: relative; opacity: 1; transform: none; white-space: normal; }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -318,9 +319,15 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 .cookiebar a { color: var(--gold-soft); text-decoration: underline; }
 .cookiebar button { flex: none; }
 
-/* ---------- Reveal on scroll ---------- */
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.in { opacity: 1; transform: none; }
+/* ---------- Reveal on scroll (progressive enhancement) ---------- */
+/* Content is visible by default. Only when JS is active do we hide-then-reveal,
+   so the page is never blank if JS/IntersectionObserver fails or is disabled. */
+.reveal { transition: opacity .7s ease, transform .7s ease; }
+.js .reveal { opacity: 0; transform: translateY(26px); }
+.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; }
+}
 
 /* ---------- Misc ---------- */
 .center { text-align: center; }

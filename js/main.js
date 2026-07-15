@@ -26,33 +26,62 @@
     }, 2600);
   });
 
-  /* Reveal on scroll */
-  var revealer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) { e.target.classList.add('in'); revealer.unobserve(e.target); }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(function (el) { revealer.observe(el); });
+  /* Reveal on scroll — progressive enhancement.
+     Content is visible by default (see CSS); the .js class enables the hide-then-reveal.
+     A failsafe guarantees everything shows even if IntersectionObserver never fires. */
+  var reveals = document.querySelectorAll('.reveal');
+  function showAllReveals() {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+  if ('IntersectionObserver' in window && reveals.length) {
+    var revealer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); revealer.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+    reveals.forEach(function (el) { revealer.observe(el); });
+    /* Failsafe: if IO hasn't revealed everything shortly after load, force it. */
+    setTimeout(showAllReveals, 2500);
+  } else {
+    showAllReveals();
+  }
 
-  /* Count-up stats */
-  var counter = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      counter.unobserve(e.target);
-      var el = e.target;
-      var target = parseInt(el.getAttribute('data-count'), 10) || 0;
-      var suffix = el.getAttribute('data-suffix') || '';
-      var t0 = null;
-      function step(ts) {
-        if (!t0) t0 = ts;
-        var p = Math.min((ts - t0) / 1600, 1);
-        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString('ro-RO') + suffix;
-        if (p < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    });
-  }, { threshold: 0.4 });
-  document.querySelectorAll('[data-count]').forEach(function (el) { counter.observe(el); });
+  /* Count-up stats — with the same failsafe philosophy. */
+  function finalize(el) {
+    if (el.dataset.done) return;
+    el.dataset.done = '1';
+    var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+    el.textContent = target.toLocaleString('ro-RO') + (el.getAttribute('data-suffix') || '');
+  }
+  function animateCount(el) {
+    if (el.dataset.done) return;
+    el.dataset.done = '1';
+    var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+    var suffix = el.getAttribute('data-suffix') || '';
+    var t0 = null;
+    function step(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / 1600, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString('ro-RO') + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var counters = document.querySelectorAll('[data-count]');
+  if ('IntersectionObserver' in window && counters.length) {
+    var counter = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        counter.unobserve(e.target);
+        animateCount(e.target);
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(function (el) { counter.observe(el); });
+    /* Failsafe: ensure final numbers are shown even if IO never fires. */
+    setTimeout(function () { counters.forEach(finalize); }, 2600);
+  } else {
+    counters.forEach(finalize);
+  }
 
   /* Newsletter + contact demo forms → mailto */
   document.querySelectorAll('form[data-mailto]').forEach(function (form) {
