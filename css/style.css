@@ -330,7 +330,7 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 .site-footer li { margin-bottom: 8px; font-size: .9rem; }
 .site-footer a { color: var(--ink-soft); }
 .site-footer a:hover { color: var(--gold); }
-.footer-brand img.sb { width: 118px; margin-bottom: 12px; }
+.footer-brand img.sb { width: 168px; margin-bottom: 14px; }
 .footer-brand p { font-size: .88rem; color: var(--ink-soft); max-width: 30ch; }
 .footer-social { display: flex; gap: 10px; margin-top: 16px; }
 .footer-social a {
