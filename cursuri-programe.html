@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cursuri &amp; Programe — Saymara B. Ryon | Simply Be! YourSELF</title>
-<meta name="description" content="Cursuri și programe transformaționale: Cartea Vieții Conștiente, Redescoperă Echilibrul cu TRE®, minicurs pentru facilitatori și programele ReUnity MATRIX®.">
+<meta name="description" content="Toate cursurile și programele Simply Be!: Cartea Vieții Conștiente, Redescoperă Echilibrul cu TRE®, minicurs pentru facilitatori și programele ReUnity MATRIX®. Filtrează după tipul de program.">
 <link rel="icon" type="image/png" href="images/symbol_colour.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +22,7 @@
       <a href="index.html">Acasă</a>
       <a href="despre.html">Despre</a>
       <a href="cursuri-programe.html" class="is-active">Cursuri &amp; Programe</a>
+      <a href="evenimente.html">Evenimente</a>
       <a href="reunity-matrix.html">ReUnity MATRIX®</a>
       <a href="blog.html">Blog</a>
       <a class="nav-cta" href="contact.html">Contact</a>
@@ -33,79 +34,127 @@
   <div class="wrap">
     <p class="breadcrumb"><a href="index.html">Acasă</a> · Cursuri &amp; Programe</p>
     <h1>Cursuri &amp; <em>Programe</em></h1>
-    <p class="lead mt-2">Pornește într-o aventură extraordinară, accesând colecția noastră de cursuri și programe. Descoperă noi orizonturi și perspective — alege să trăiești liber și cu pasiune o viață plină de sens, echilibru și împlinire.</p>
+    <p class="lead mt-2">Toate programele Simply Be!, într-un singur loc. Alege să trăiești liber și cu pasiune o viață plină de sens, echilibru și împlinire — filtrează după tipul de program care ți se potrivește.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <div class="banner mb-3 reveal"><img src="images/business-workstation-PRB5Z2M.jpg" alt="Spațiu de lucru cu laptop și cafea — pregătit pentru învățare"></div>
-    <div class="grid grid--3">
-      <article class="pcard reveal">
+    <div class="filter-bar reveal" role="tablist" aria-label="Filtrează programele">
+      <button class="filter-btn is-active" type="button" data-filter="all">Toate</button>
+      <button class="filter-btn" type="button" data-filter="self">Autoghidate</button>
+      <button class="filter-btn" type="button" data-filter="tre">TRE® &amp; somatic</button>
+      <button class="filter-btn" type="button" data-filter="group">Grup &amp; formări</button>
+      <button class="filter-btn" type="button" data-filter="mentoring">Mentoring 1-la-1</button>
+    </div>
+
+    <div class="grid grid--3" id="program-grid">
+      <article class="pcard" data-cat="self">
         <div class="pcard-media"><img src="images/CVC01.jpg" alt="Cartea Vieții Conștiente — planner art-terapeutic fotografiat pe birou"></div>
         <div class="pcard-body">
-          <span class="pcard-meta">Program holistic autoghidat · 12 teme</span>
+          <span class="pcard-meta">Autoghidat · 12 teme · 365 zile</span>
           <h3>Cartea Vieții Conștiente</h3>
-          <p>Un program autoghidat complet de transformare calitativă a vieții — planner, carte inspirațională, caiet de lucru art-terapeutic, Mandale de Lumină bio-rezonatoare, plus 12 desene originale. 364 pagini color, cu o grafică deosebită.</p>
+          <p>Program holistic autoghidat de transformare — planner, carte inspirațională, caiet de lucru art-terapeutic, Mandale de Lumină bio-rezonatoare și 12 desene originale. 364 pagini color.</p>
           <a class="card-link" href="curs-cartea-vietii-constiente.html">Descoperă programul</a>
         </div>
       </article>
-      <article class="pcard reveal">
+
+      <article class="pcard" data-cat="tre">
         <div class="pcard-media"><img src="images/Redescopera-Echilibru-cu-TRE-incepatori-@-Sambodhi.jpg" alt="Afiș: Redescoperă echilibrul cu TRE — program somatic de 6 săptămâni la Sambodhi Studio"></div>
         <div class="pcard-body">
-          <span class="pcard-meta">Program somatic de grup · 6 săptămâni</span>
+          <span class="pcard-meta">Somatic · grup · 6 săptămâni</span>
           <h3>Redescoperă Echilibrul cu TRE®</h3>
-          <p>TRE® (Tension, Stress &amp; Trauma Release Exercise) este mai mult decât o tehnică de relaxare: o practică somatică profundă pentru eliberarea tensiunilor, stresului și traumelor — și redescoperirea echilibrului interior prin autoreglare naturală.</p>
+          <p>O practică somatică profundă pentru eliberarea tensiunilor, stresului și traumelor și redescoperirea echilibrului interior, prin mecanismele naturale de autoreglare ale corpului.</p>
           <a class="card-link" href="curs-tre-6-saptamani.html">Descoperă programul</a>
         </div>
       </article>
-      <article class="pcard reveal">
+
+      <article class="pcard" data-cat="group">
         <div class="pcard-media"><img src="images/Template-Ab-text-continut-500-380-px3.jpg" alt="Grup de participanți lucrând împreună la un proiect"></div>
         <div class="pcard-body">
-          <span class="pcard-meta">Minicurs · lucrul cu grupurile</span>
-          <h3>Secretele profesioniștilor de succes în lucrul cu grupurile</h3>
-          <p>Învață cum poți să conduci un grup cu încredere, ușurință, autenticitate și bucurie! Mai puțin efort, cu rezultate concrete și semnificative, pe termen mediu și lung — online și în persoană.</p>
+          <span class="pcard-meta">Minicurs · facilitatori · 2 săptămâni</span>
+          <h3>Secretele profesioniștilor în lucrul cu grupurile</h3>
+          <p>Condu un grup cu încredere, ușurință, autenticitate și bucurie. Mai puțin efort, cu rezultate concrete și semnificative pe termen mediu și lung — online și în persoană.</p>
           <a class="card-link" href="curs-minicurs-facilitatori.html">Descoperă minicursul</a>
         </div>
       </article>
+
+      <article class="pcard" data-cat="mentoring">
+        <div class="pcard-media"><img src="images/iulia-portrait-6.jpg" alt="Iulia Ioana într-o sesiune de mentorat 1 la 1"></div>
+        <div class="pcard-body">
+          <span class="pcard-meta">Mentoring · 1 la 1 · 6 luni</span>
+          <h3>Master of Groups</h3>
+          <p>Premium Mentoring pentru facilitatori care vor să-și ducă lucrul cu grupurile la nivel de măiestrie — transferul experienței, ca de la maestru la discipol.</p>
+          <a class="card-link" href="contact.html">Solicită detalii</a>
+        </div>
+      </article>
+
+      <article class="pcard" data-cat="group">
+        <div class="pcard-media"><img src="images/Gallery-List-Image-Template3.jpg" alt="Retreat de grup — participante lucrând creativ împreună"></div>
+        <div class="pcard-body">
+          <span class="pcard-meta">Retreat de grup · 3 module de weekend</span>
+          <h3>Dorința Inimii®</h3>
+          <p>O călătorie ghidată de vindecare, autocunoaștere și evoluție prin Dorința Inimii — în metoda ReUnity MATRIX®, alături de un grup de oameni asemenea ție.</p>
+          <a class="card-link" href="reunity-matrix.html">Despre metodă</a>
+        </div>
+      </article>
+
+      <article class="pcard" data-cat="mentoring">
+        <div class="pcard-media"><img src="images/iulia-portrait-3.jpg" alt="Iulia Ioana într-o sesiune de coaching holistic"></div>
+        <div class="pcard-body">
+          <span class="pcard-meta">Coaching · 1 la 1 · 6 luni</span>
+          <h3>Simply Be! Master of Self</h3>
+          <p>Premium Holistic Coaching Program — transformare integrală, profund personalizată, în ritmul tău: minte, corp, suflet și emoții, conștient și subconștient.</p>
+          <a class="card-link" href="contact.html">Solicită detalii</a>
+        </div>
+      </article>
+
+      <article class="pcard" data-cat="group">
+        <div class="pcard-media"><img src="images/group-of-high-school-students-with-female-teacher-X8D9B7H.jpg" alt="Grup de elevi alături de profesoara lor"></div>
+        <div class="pcard-body">
+          <span class="pcard-meta">Formare · grup · 1 an</span>
+          <h3>Schimbarea Paradigmei de Gândire în Educație</h3>
+          <p>Formare pentru educatori, profesori și părinți — modele alternative de învățare transformațională, online și în persoană.</p>
+          <a class="card-link" href="contact.html">Solicită detalii</a>
+        </div>
+      </article>
     </div>
+
+    <p class="center mt-3 reveal" style="color:var(--ink-soft);" id="program-empty" hidden>Niciun program în această categorie momentan — <a href="contact.html">scrie-mi</a> și construim unul potrivit pentru tine.</p>
   </div>
 </section>
 
 <section class="section section--blush">
-  <div class="wrap">
-    <div class="center mb-3 reveal">
-      <p class="eyebrow">Programe actuale</p>
-      <h2>Programe în metoda <em>ReUnity MATRIX®</em></h2>
-    </div>
-    <div class="grid grid--2">
-      <article class="card reveal">
-        <span class="pcard-meta">6 luni · online</span>
-        <h3 class="mt-1">Master of Groups</h3>
-        <p>1 on 1 · Premium Mentoring — pentru facilitatori care vor să-și ducă lucrul cu grupurile la nivel de măiestrie.</p>
-        <a class="card-link" href="contact.html">Solicită detalii</a>
-      </article>
-      <article class="card reveal">
-        <span class="pcard-meta">3 luni · retreat de grup</span>
-        <h3 class="mt-1">Dorința Inimii®</h3>
-        <p>3 module de weekend — o călătorie ghidată spre vindecarea, autocunoașterea și evoluția prin Dorința Inimii.</p>
-        <a class="card-link" href="contact.html">Solicită detalii</a>
-      </article>
-      <article class="card reveal">
-        <span class="pcard-meta">6 luni · 1 on 1</span>
-        <h3 class="mt-1">Simply Be! Master of Self</h3>
-        <p>Premium Holistic Coaching Program — transformare integrală, personalizată, în ritmul tău.</p>
-        <a class="card-link" href="contact.html">Solicită detalii</a>
-      </article>
-      <article class="card reveal">
-        <span class="pcard-meta">1 an · online și în persoană</span>
-        <h3 class="mt-1">Schimbarea Paradigmei de Gândire în Educație</h3>
-        <p>Formare de grup pentru educatori, profesori și părinți — modele alternative de învățare transformațională.</p>
-        <a class="card-link" href="contact.html">Solicită detalii</a>
-      </article>
-    </div>
+  <div class="wrap center reveal" style="max-width:720px;">
+    <p class="eyebrow eyebrow--plain">Nu ești sigur(ă) ce ți se potrivește?</p>
+    <h2>Începem cu un <em>call de descoperire</em></h2>
+    <p class="lead mt-2" style="margin-inline:auto;">Înainte de orice program avem o discuție scurtă, ca să vedem împreună ce se potrivește cel mai bine momentului și nevoilor tale.</p>
+    <div class="btn-row" style="justify-content:center;"><a class="btn" href="contact.html">Hai să ne cunoaștem</a></div>
   </div>
 </section>
+
+<script>
+(function () {
+  var bar = document.querySelector('.filter-bar');
+  var grid = document.getElementById('program-grid');
+  var empty = document.getElementById('program-empty');
+  if (!bar || !grid) return;
+  bar.addEventListener('click', function (e) {
+    var btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    bar.querySelectorAll('.filter-btn').forEach(function (x) { x.classList.remove('is-active'); });
+    btn.classList.add('is-active');
+    var f = btn.getAttribute('data-filter');
+    var shown = 0;
+    grid.querySelectorAll('.pcard').forEach(function (c) {
+      var match = (f === 'all' || c.getAttribute('data-cat') === f);
+      c.hidden = !match;
+      if (match) shown++;
+    });
+    if (empty) empty.hidden = shown !== 0;
+  });
+})();
+</script>
 <!-- NEWSLETTER -->
 <section class="section section--plum" style="padding-top:56px;padding-bottom:56px;">
   <div class="wrap split">
@@ -165,7 +214,7 @@
     </div>
     <div class="footer-bottom">
       <span>© <span data-year>2026</span> H.M. Iulia Ioana · Simply Be! YourSELF · SC Învață să Zbori SRL</span>
-      <span><a href="https://www.google.com/maps/search/?api=1&query=Atelier+de+Suflet+Bucuresti" target="_blank" rel="noopener">Vezi harta</a></span>
+      <span>Powered by <a href="https://www.technext.asia" target="_blank" rel="noopener">TechNext</a> · <a href="https://www.google.com/maps/search/?api=1&query=Atelier+de+Suflet+Bucuresti" target="_blank" rel="noopener">Vezi harta</a></span>
     </div>
   </div>
 </footer>

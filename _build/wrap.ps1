@@ -5,7 +5,7 @@
 # their header/footer must stay byte-identical to the templates below (verified by audit).
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
-$navKeys = @{ 'index'='index.html'; 'despre'='despre.html'; 'cursuri'='cursuri-programe.html'; 'reunity'='reunity-matrix.html'; 'blog'='blog.html'; 'contact'='contact.html' }
+$navKeys = @{ 'index'='index.html'; 'despre'='despre.html'; 'cursuri'='cursuri-programe.html'; 'evenimente'='evenimente.html'; 'reunity'='reunity-matrix.html'; 'blog'='blog.html'; 'contact'='contact.html' }
 
 $headerTpl = @'
 <!DOCTYPE html>
@@ -32,6 +32,7 @@ $headerTpl = @'
       <a href="index.html"{{A-index}}>Acasă</a>
       <a href="despre.html"{{A-despre}}>Despre</a>
       <a href="cursuri-programe.html"{{A-cursuri}}>Cursuri &amp; Programe</a>
+      <a href="evenimente.html"{{A-evenimente}}>Evenimente</a>
       <a href="reunity-matrix.html"{{A-reunity}}>ReUnity MATRIX®</a>
       <a href="blog.html"{{A-blog}}>Blog</a>
       <a class="nav-cta" href="contact.html"{{A-contact}}>Contact</a>
@@ -102,7 +103,7 @@ $footerTpl = @'
     </div>
     <div class="footer-bottom">
       <span>© <span data-year>2026</span> H.M. Iulia Ioana · Simply Be! YourSELF · SC Învață să Zbori SRL</span>
-      <span><a href="https://www.google.com/maps/search/?api=1&query=Atelier+de+Suflet+Bucuresti" target="_blank" rel="noopener">Vezi harta</a></span>
+      <span>Powered by <a href="https://www.technext.asia" target="_blank" rel="noopener">TechNext</a> · <a href="https://www.google.com/maps/search/?api=1&query=Atelier+de+Suflet+Bucuresti" target="_blank" rel="noopener">Vezi harta</a></span>
     </div>
   </div>
 </footer>

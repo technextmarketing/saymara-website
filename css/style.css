@@ -6,21 +6,21 @@
    ============================================================ */
 
 :root {
-  --paper: #FCFCFD;        /* page background — near-white, neutral */
-  --blush: #F3F4F6;        /* alternating section band — light neutral grey */
-  --blush-deep: #E8EAEE;   /* deeper neutral grey accent */
-  --ink: #46323C;
-  --ink-soft: #6E5A63;
-  --plum: #5C3A4D;
-  --plum-deep: #3E2733;
-  --rose: #C94F6D;
-  --rose-soft: #E4A3B2;
-  --gold: #B8862D;
-  --gold-soft: #DBBB76;
+  --paper: #FFFFFF;        /* page background — clean white */
+  --blush: #F8F7F3;        /* alternating section band — very light warm off-white */
+  --blush-deep: #F1EFE8;   /* slightly deeper light band */
+  --ink: #333846;          /* body text — dark grey-navy, high readability */
+  --ink-soft: #545A69;     /* secondary text — still clearly readable */
+  --plum: #454C60;         /* mid navy accent (quotes, tags) */
+  --plum-deep: #2A3142;    /* headings — dark navy */
+  --rose: #BC7C15;         /* PRIMARY ACCENT = deep gold (links, buttons, emphasis) */
+  --rose-soft: #E3B24E;    /* lighter gold */
+  --gold: #C0871B;         /* gold (icons, borders) */
+  --gold-soft: #E3B24E;    /* soft gold */
   --sky: #3E8FB0;
   --wing: linear-gradient(90deg, #E8B84B 0%, #E0705F 25%, #C94F6D 50%, #7A5C93 75%, #3E8FB0 100%);
-  --shadow-soft: 0 18px 40px -18px rgba(70, 50, 60, .25);
-  --radius: 18px;
+  --shadow-soft: 0 16px 36px -20px rgba(40, 44, 60, .20);
+  --radius: 10px;          /* cards: less-rounded corners */
   --font-display: 'Cormorant Garamond', 'Georgia', serif;
   --font-body: 'Karla', 'Segoe UI', sans-serif;
   --font-hand: 'Caveat', cursive;
@@ -58,12 +58,17 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
 .section { padding: clamp(56px, 6.2vw, 96px) 0; position: relative; }
 .section--blush { background: var(--blush); }
-/* Former dark band — now a light neutral section (class name kept across all pages). */
-.section--plum { background: #ECEEF1; color: var(--ink); }
+/* Former dark band — now a light warm section (class name kept across all pages). */
+.section--plum { background: var(--blush-deep); color: var(--ink); }
 .section--plum h2, .section--plum h3 { color: var(--plum-deep); }
 .section--plum p { color: var(--ink-soft); }
 /* Gentle seam so stacked sections read as segmented — not alienated by a big void. */
-.section + .section { border-top: 1px solid rgba(184, 134, 45, .08); }
+.section + .section { border-top: 1px solid rgba(192, 135, 27, .10); }
+
+/* Standalone images (not inside a card) render with SQUARE corners; cards keep the
+   reduced --radius. Circular ring portraits are intentional and unaffected. */
+.split-media > img, .prose img, .banner, .banner img, .acc-body img,
+.info-strip img, figure > img { border-radius: 0; }
 
 /* Eyebrow: hummingbird glyph + tracked caps */
 .eyebrow {
@@ -157,7 +162,7 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
   padding: 14px 30px; border-radius: 999px; border: none; cursor: pointer;
   font-family: var(--font-body); font-weight: 700; font-size: 1rem;
   background: var(--rose); color: #fff; transition: transform .2s, background .25s, box-shadow .25s;
-  box-shadow: 0 10px 24px -12px rgba(201, 79, 109, .8);
+  box-shadow: 0 10px 24px -12px rgba(188, 124, 21, .55);
 }
 .btn:hover { background: var(--plum); color: #fff; transform: translateY(-2px); }
 .btn--ghost { background: transparent; color: var(--plum-deep); border: 2px solid var(--gold); box-shadow: none; }
@@ -203,7 +208,7 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 
 /* Plain centered feature column — no card box (image centered above the copy) */
 .feature { text-align: center; padding: 4px 12px; }
-.feature .ring { width: 132px; display: block; margin: 0 auto 22px; }
+.feature .ring { width: 184px; display: block; margin: 0 auto 24px; }
 .feature h3 { margin-bottom: 10px; }
 .feature p { color: var(--ink-soft); font-size: .98rem; max-width: 30ch; margin-inline: auto; }
 .feature .card-link { margin-top: 18px; }
@@ -237,6 +242,18 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 .pcard-body h3 { font-size: 1.35rem; }
 .pcard-body p { color: var(--ink-soft); font-size: .95rem; flex: 1; }
 .pcard-meta { font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+
+/* ---------- Program filter bar (cursuri-programe) ---------- */
+.filter-bar { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: clamp(28px, 4vw, 46px); }
+.filter-btn {
+  font-family: var(--font-body); font-weight: 700; font-size: .9rem;
+  padding: 9px 20px; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgba(192, 135, 27, .4); background: #fff; color: var(--ink);
+  transition: background .2s, color .2s, border-color .2s;
+}
+.filter-btn:hover { border-color: var(--gold); color: var(--rose); }
+.filter-btn.is-active { background: var(--rose); border-color: var(--rose); color: #fff; }
+#program-grid .pcard[hidden] { display: none; }
 
 /* ---------- Split feature ---------- */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
@@ -315,14 +332,14 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
   width: 100%; padding: 14px 16px; border-radius: 12px; border: 1px solid rgba(184,134,45,.4);
   background: #fff; font-family: var(--font-body); font-size: 1rem; color: var(--ink);
 }
-.form-grid input:focus, .form-grid textarea:focus { outline: 3px solid rgba(201,79,109,.35); border-color: var(--rose); }
+.form-grid input:focus, .form-grid textarea:focus { outline: 3px solid rgba(188,124,21,.35); border-color: var(--rose); }
 
 .newsletter { display: flex; gap: 12px; flex-wrap: wrap; }
 .newsletter input { flex: 1 1 240px; padding: 14px 18px; border-radius: 999px; border: 1px solid rgba(184,134,45,.5); background: #fff; font-family: var(--font-body); font-size: 1rem; }
 
 /* ---------- Footer (compact, light) ---------- */
 .site-footer { background: #ECEEF1; color: var(--ink-soft); border-top: 1px solid rgba(184,134,45,.14); }
-.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: clamp(24px, 4vw, 48px); padding: 44px 0 30px; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: clamp(18px, 3vw, 38px); padding: 30px 0 18px; }
 @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; } }
 @media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr; } }
 .site-footer h3 { color: var(--plum-deep); font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 14px; }
@@ -342,7 +359,7 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 .footer-social a:hover svg { fill: #fff; }
 .footer-contact li { display: flex; gap: 8px; align-items: flex-start; color: var(--ink-soft); }
 .footer-contact .ico { width: 16px; height: 16px; margin-top: 3px; color: var(--gold); }
-.footer-bottom { border-top: 1px solid rgba(70,50,60,.14); padding: 18px 0 22px; font-size: .82rem; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: var(--ink-soft); }
+.footer-bottom { border-top: 1px solid rgba(70,50,60,.14); padding: 12px 0 16px; font-size: .82rem; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: var(--ink-soft); }
 .footer-bottom a { color: var(--ink-soft); }
 .footer-bottom a:hover { color: var(--gold); }
 
