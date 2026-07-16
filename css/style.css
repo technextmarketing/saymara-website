@@ -55,9 +55,15 @@ h3 { font-size: clamp(1.35rem, 2.2vw, 1.75rem); }
 h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
-.section { padding: clamp(64px, 9vw, 120px) 0; position: relative; }
+.section { padding: clamp(56px, 6.2vw, 96px) 0; position: relative; }
 .section--blush { background: var(--blush); }
 .section--plum { background: var(--plum-deep); color: #F4E8EC; }
+/* Gentle seam so stacked sections read as segmented — not alienated by a big void.
+   Suppressed around dark (plum) boundaries where a hairline would read as a hard edge. */
+.section + .section { border-top: 1px solid rgba(184, 134, 45, .08); }
+.section--plum + .section,
+.section + .section--plum,
+.section--plum + .section--plum { border-top-color: transparent; }
 .section--plum h2, .section--plum h3 { color: #FBF3EE; }
 .section--plum p { color: #E8D5DC; }
 
@@ -186,7 +192,9 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 @media (max-width: 620px) { .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; } }
 
 .card {
-  background: #fff; border-radius: var(--radius); padding: 30px;
+  position: relative;
+  background: linear-gradient(158deg, #FFFFFF 0%, #FFFDFA 58%, var(--paper) 100%);
+  border-radius: var(--radius); padding: 30px;
   border: 1px solid rgba(184, 134, 45, .18);
   box-shadow: 0 14px 34px -22px rgba(70, 50, 60, .3);
   transition: transform .25s, box-shadow .25s;
@@ -197,6 +205,63 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 .card .ring { width: 128px; margin-bottom: 22px; }
 .card-link { display: inline-block; margin-top: 16px; font-weight: 700; font-size: .92rem; letter-spacing: .04em; }
 .card-link::after { content: " →"; }
+
+/* ---------- Card variants (used for balance — some cards simple, some enticing) ---------- */
+/* Soft single-hue tints: a bit more life than plain white, still calm. */
+.card--blush { background: linear-gradient(155deg, #FFF7EF 0%, var(--blush) 100%); border-color: rgba(184, 134, 45, .24); }
+.card--rose  { background: linear-gradient(155deg, #FFF3F2 0%, #F7D8DC 100%); border-color: rgba(201, 79, 109, .22); }
+.card--gold  { background: linear-gradient(155deg, #FFFBF0 0%, #F1E1BE 100%); border-color: rgba(184, 134, 45, .30); }
+.card--sky   { background: linear-gradient(155deg, #EFF6FA 0%, #D8E7EF 100%); border-color: rgba(62, 143, 176, .22); }
+
+/* Feature card — the "bit more excitement" tier: richer gradient + a soft gilded glow. */
+.card--feature {
+  background: linear-gradient(135deg, #FBEEE6 0%, var(--blush-deep) 48%, var(--rose-soft) 135%);
+  border-color: rgba(184, 134, 45, .40);
+  box-shadow: 0 20px 46px -22px rgba(92, 58, 77, .45);
+  overflow: hidden;
+}
+.card--feature::after {
+  content: ""; position: absolute; top: -38%; right: -28%;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(219, 187, 118, .55) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Icon medallion stays white so it still pops on tinted cards. */
+.card--blush .ico-badge, .card--rose .ico-badge, .card--gold .ico-badge,
+.card--sky .ico-badge, .card--feature .ico-badge {
+  background: #fff; border-color: rgba(184, 134, 45, .40);
+  box-shadow: 0 8px 18px -12px rgba(70, 50, 60, .5);
+}
+
+/* Photo card — blurred image behind a scrim, light text. Set image via
+   inline style="--card-img:url('images/…')" on the .card--photo element. */
+.card--photo { overflow: hidden; color: #FBF3EE; border-color: rgba(255, 255, 255, .18); }
+.card--photo > * { position: relative; z-index: 2; }
+.card--photo h3 { color: #fff; }
+.card--photo p { color: rgba(251, 243, 238, .92); }
+.card--photo .card-link { color: var(--gold-soft); }
+.card--photo::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background-image: var(--card-img); background-size: cover; background-position: center;
+  transform: scale(1.1); filter: blur(2px) saturate(1.05);
+}
+.card--photo::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(155deg, rgba(62, 39, 51, .55) 0%, rgba(62, 39, 51, .84) 100%);
+}
+
+/* Glass card — opt-in, for dark (plum) sections so panels aren't flat blocks. */
+.card--glass {
+  background: rgba(255, 255, 255, .07);
+  border-color: rgba(219, 187, 118, .28);
+  color: #F4E8EC;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, .5);
+}
+.card--glass h3 { color: #FBF3EE; }
+.card--glass p { color: #E8D5DC; }
+.card--glass .card-link { color: var(--gold-soft); }
 
 /* Photo cards (courses, blog) */
 .pcard { background: #fff; border-radius: var(--radius); overflow: hidden; border: 1px solid rgba(184,134,45,.18); box-shadow: 0 14px 34px -22px rgba(70,50,60,.3); display: flex; flex-direction: column; transition: transform .25s; }
@@ -223,7 +288,7 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 .stat span { font-size: .85rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: inherit; opacity: .85; }
 
 /* ---------- Testimonials ---------- */
-.tcard { background: #fff; border-radius: var(--radius); padding: 34px 30px; border: 1px solid rgba(184,134,45,.18); box-shadow: 0 14px 34px -22px rgba(70,50,60,.3); display: flex; flex-direction: column; gap: 18px; }
+.tcard { background: linear-gradient(160deg, #FFFFFF 0%, #FFFCF7 55%, var(--paper) 100%); border-radius: var(--radius); padding: 34px 30px; border: 1px solid rgba(184,134,45,.18); box-shadow: 0 14px 34px -22px rgba(70,50,60,.3); display: flex; flex-direction: column; gap: 18px; }
 .tcard blockquote { font-family: var(--font-display); font-size: 1.25rem; font-style: italic; line-height: 1.45; color: var(--plum); }
 .tcard blockquote::before { content: "„"; color: var(--gold); font-size: 1.6em; line-height: 0; margin-right: 2px; }
 .tcard footer { display: flex; align-items: center; gap: 14px; margin-top: auto; }
