@@ -264,7 +264,7 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 }
 .filter-btn:hover { border-color: var(--gold); color: var(--rose); }
 .filter-btn.is-active { background: var(--rose); border-color: var(--rose); color: #fff; }
-#program-grid .pcard[hidden] { display: none; }
+#program-grid .pcard[hidden], #event-grid .pcard[hidden] { display: none; }
 
 /* ---------- Split feature ---------- */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
@@ -532,3 +532,23 @@ body.chat-open .chat-panel { opacity: 1; transform: none; pointer-events: auto; 
   .chat-panel { right: 10px; left: 10px; width: auto; bottom: 86px; height: min(72vh, calc(100vh - 104px)); }
   .chat-fab { right: 16px; bottom: 16px; width: 56px; height: 56px; }
 }
+
+/* ---------- Language toggle (Google Translate powered) ---------- */
+.nav-lang {
+  font-family: var(--font-body); font-weight: 700; font-size: .82rem; letter-spacing: .04em;
+  color: var(--ink); background: none; border: 1px solid rgba(192,135,27,.5);
+  padding: 6px 13px; border-radius: 999px; cursor: pointer; margin-left: 4px;
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.nav-lang:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+.nav-lang svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+@media (max-width: 1040px) { .nav-lang { align-self: flex-start; margin: 4px 0 0; } }
+
+/* Hide Google Translate default chrome (we drive it with our own button) */
+#google_translate_element, .goog-te-gadget, .skiptranslate, .goog-te-banner-frame { display: none !important; }
+.goog-te-gadget-icon { display: none !important; }
+body { top: 0 !important; position: static !important; }
+html.translated-ltr body, html.translated-rtl body { top: 0 !important; }
+.goog-tooltip, #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+font { background: transparent !important; box-shadow: none !important; }

@@ -308,4 +308,49 @@
       if (e.key === 'Escape' && document.body.classList.contains('chat-open')) closeChat();
     });
   })();
+
+  /* ============================================================
+     Language toggle — Google Translate (RO ⇄ EN) driven by a custom button.
+     ============================================================ */
+  (function initTranslate() {
+    var buttons = document.querySelectorAll('.nav-lang');
+    if (!buttons.length) return;
+    function getCookie(n) { var m = document.cookie.match('(?:^|; )' + n + '=([^;]*)'); return m ? decodeURIComponent(m[1]) : ''; }
+    function isEN() { return /\/en(\/|$)/.test(getCookie('googtrans')); }
+
+    /* Inject the hidden Google Translate element + loader once */
+    if (!document.getElementById('google_translate_element')) {
+      var gt = document.createElement('div');
+      gt.id = 'google_translate_element';
+      document.body.appendChild(gt);
+      window.googleTranslateElementInit = function () {
+        try {
+          new google.translate.TranslateElement({ pageLanguage: 'ro', includedLanguages: 'en,ro', autoDisplay: false }, 'google_translate_element');
+        } catch (e) { /* offline / blocked — button simply won't translate */ }
+      };
+      var s = document.createElement('script');
+      s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      s.async = true;
+      document.head.appendChild(s);
+    }
+
+    function setLang(to) {
+      var host = location.hostname;
+      if (to === 'en') {
+        document.cookie = 'googtrans=/ro/en; path=/';
+        document.cookie = 'googtrans=/ro/en; domain=' + host + '; path=/';
+      } else {
+        document.cookie = 'googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+        document.cookie = 'googtrans=; domain=' + host + '; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+      }
+      location.reload();
+    }
+
+    buttons.forEach(function (btn) {
+      var label = btn.querySelector('.nav-lang-txt');
+      if (label) label.textContent = isEN() ? 'RO' : 'EN';
+      btn.setAttribute('aria-label', isEN() ? 'Comută în română' : 'Translate to English');
+      btn.addEventListener('click', function () { setLang(isEN() ? 'ro' : 'en'); });
+    });
+  })();
 })();
