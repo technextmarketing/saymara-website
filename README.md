@@ -2,7 +2,7 @@
 
 Improved, redesigned website for **saymararyon.com** (H.M. Iulia Ioana / Saymara B. Ryon) — a holistic coach, art-therapist, TRE® facilitator and founder of the **ReUnity MATRIX®** method.
 
-A fast, fully static, mobile-first site in Romanian, rebuilt from the original WordPress/Elementor site with a bespoke "flight rings" visual identity (gilded circular imagery, Cormorant Garamond + Karla, ivory/blush/plum/rose/gold palette).
+A fast, fully static, mobile-first site in Romanian, rebuilt from the original WordPress/Elementor site with a bespoke "flight rings" visual identity (gilded circular imagery, Poppins (titles) + Karla (body), light/warm-white background with gold accents).
 
 ## Pages (19)
 
