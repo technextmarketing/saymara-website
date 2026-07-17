@@ -12,6 +12,35 @@
     });
   }
 
+  /* Hero background videos — force muted autoplay + loop, retry on first interaction */
+  (function () {
+    var vids = document.querySelectorAll('.hero-video');
+    if (!vids.length) return;
+    function playAll() {
+      vids.forEach(function (v) {
+        v.muted = true; v.defaultMuted = true; v.loop = true;
+        v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
+        var p = v.play();
+        if (p && typeof p.catch === 'function') { p.catch(function () {}); }
+      });
+    }
+    playAll();
+    // Some browsers block autoplay until a user gesture — retry once on interaction.
+    var retry = function () {
+      playAll();
+      ['click', 'touchstart', 'scroll', 'keydown'].forEach(function (ev) {
+        window.removeEventListener(ev, retry);
+      });
+    };
+    ['click', 'touchstart', 'scroll', 'keydown'].forEach(function (ev) {
+      window.addEventListener(ev, retry, { passive: true });
+    });
+    // Also (re)play when the tab becomes visible again.
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) playAll();
+    });
+  })();
+
   /* Rotating words in heroes */
   document.querySelectorAll('.rotator').forEach(function (rot) {
     var words = rot.querySelectorAll('span');
