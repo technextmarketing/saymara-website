@@ -1,8 +1,8 @@
 /* ============================================================
    Saymara B. Ryon — Simply Be! YourSELF
-   Design system: "flight rings" — gilded circular imagery,
+   Design system: big & bold rounded-rectangle imagery (no circle frames),
    Poppins (titles) + Karla (body), white / warm-light backgrounds,
-   rose + gold accents (no cream / no pink fills — ref: saymararyon.com)
+   vibrant gold primary + coral/magenta accents, rainbow hummingbird brand.
    ============================================================ */
 
 :root {
@@ -13,10 +13,12 @@
   --ink-soft: #545A69;     /* secondary text — still clearly readable */
   --plum: #454C60;         /* mid navy accent (quotes, tags) */
   --plum-deep: #2A3142;    /* headings — dark navy */
-  --rose: #BC7C15;         /* PRIMARY ACCENT = deep gold (links, buttons, emphasis) */
-  --rose-soft: #E3B24E;    /* lighter gold */
-  --gold: #C0871B;         /* gold (icons, borders) */
-  --gold-soft: #E3B24E;    /* soft gold */
+  --rose: #C88A0C;         /* PRIMARY ACCENT = vibrant gold (links, buttons, emphasis) */
+  --rose-soft: #EEBC46;    /* lighter gold */
+  --gold: #C88A0C;         /* gold (icons, borders) */
+  --gold-soft: #EEBC46;    /* soft gold */
+  --coral: #E0705F;        /* vibrant warm coral — secondary accent */
+  --coral-deep: #C94F6D;   /* vibrant magenta-rose — accent */
   --sky: #3E8FB0;
   --wing: linear-gradient(90deg, #E8B84B 0%, #E0705F 25%, #C94F6D 50%, #7A5C93 75%, #3E8FB0 100%);
   --shadow-soft: 0 16px 36px -20px rgba(40, 44, 60, .20);
@@ -97,7 +99,7 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
   border-bottom: 1px solid rgba(184, 134, 45, .18);
 }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 9px; padding-bottom: 9px; }
-.brand img { height: 40px; width: auto; display: block; }
+.brand img { height: 56px; width: auto; display: block; }
 .nav { display: flex; align-items: center; gap: 2px; }
 .nav a {
   font-size: .86rem; font-weight: 700; color: var(--ink);
@@ -126,29 +128,24 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
   .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 }
 
-/* ---------- Ring (circular portrait, clean gold halo) ---------- */
-.ring { position: relative; display: inline-block; }
+/* ---------- Image block (big, bold, rounded-rectangle — no circle frame) ---------- */
+.ring { position: relative; display: block; }
 .ring img {
-  border-radius: 50%; aspect-ratio: 1; object-fit: cover; width: 100%;
-  border: 5px solid #fff;
-  box-shadow: var(--shadow-soft);
-}
-.ring::after {
-  content: ""; position: absolute; inset: -8px;
-  border: 1.5px solid var(--gold); border-radius: 50%;
-  opacity: .55; pointer-events: none;
+  border-radius: var(--radius); width: 100%; object-fit: cover; display: block;
+  box-shadow: 0 26px 54px -26px rgba(40, 44, 60, .45);
 }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; overflow: hidden; padding: clamp(52px, 7vw, 96px) 0; }
-.hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1.02fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
 .hero .sun {
   position: absolute; top: -50px; right: -50px; width: clamp(150px, 20vw, 290px);
   opacity: .4; pointer-events: none; z-index: 0;
 }
 .hero .shawl { position: absolute; bottom: -30px; left: -50px; width: clamp(120px, 16vw, 230px); opacity: .3; pointer-events: none; z-index: 0; }
 .hero .wrap { position: relative; z-index: 1; }
-.hero-media { position: relative; max-width: 420px; margin-inline: auto; }
+.hero-media { position: relative; max-width: 560px; margin-inline: auto; }
+.hero-media .ring img { aspect-ratio: 5/6; }
 
 /* Rotating words */
 .rotator { display: inline-block; position: relative; min-width: 9ch; max-width: 100%; color: var(--rose); font-style: italic; }
@@ -184,14 +181,19 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 /* ---------- Icons (inline SVG, stroke = currentColor) ---------- */
 .ico { width: 1.5rem; height: 1.5rem; flex: none; stroke: currentColor; stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .ico-h { display: flex; align-items: center; gap: 12px; }
-.ico-h .ico { color: var(--rose); }
-/* Round icon medallion for icon cards */
+.ico-h .ico { color: var(--coral); }
+/* Vibrant round icon medallion for icon cards */
 .ico-badge {
-  width: 62px; height: 62px; border-radius: 50%; display: inline-flex;
-  align-items: center; justify-content: center; margin-bottom: 20px;
-  background: var(--blush); color: var(--rose); border: 1.5px solid rgba(184,134,45,.4);
+  width: 84px; height: 84px; border-radius: 50%; display: inline-flex;
+  align-items: center; justify-content: center; margin-bottom: 22px;
+  background: linear-gradient(135deg, var(--gold-soft) 0%, var(--coral) 55%, var(--coral-deep) 100%);
+  color: #fff; border: none;
+  box-shadow: 0 14px 28px -12px rgba(201, 79, 109, .55);
+  transition: transform .3s cubic-bezier(.34,1.4,.64,1), box-shadow .3s;
 }
-.ico-badge .ico { width: 28px; height: 28px; stroke-width: 1.7; }
+.feature:hover .ico-badge, .card:hover .ico-badge { transform: translateY(-4px) scale(1.05); }
+.ico-badge .ico { width: 38px; height: 38px; stroke-width: 1.7; }
+.section--plum .ico-badge { color: #fff; }
 /* Inline accent icon (replaces emoji before eyebrows/headings) */
 .ico-accent { width: 1.15rem; height: 1.15rem; color: var(--gold); vertical-align: -2px; margin-right: 6px; }
 
@@ -214,11 +216,12 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 .card:hover { transform: translateY(-6px); box-shadow: 0 26px 48px -22px rgba(40, 44, 60, .32); border-color: rgba(192, 135, 27, .5); }
 .card h3 { margin-bottom: 10px; }
 .card p { color: var(--ink-soft); font-size: .98rem; }
-.card .ring { width: 128px; margin-bottom: 22px; }
+.card .ring { width: 100%; margin-bottom: 22px; }
 
-/* Plain centered feature column — no card box (image centered above the copy) */
-.feature { text-align: center; padding: 4px 12px; }
-.feature .ring { width: 184px; display: block; margin: 0 auto 24px; }
+/* Plain centered feature column — no card box (big bold image above the copy) */
+.feature { text-align: center; padding: 4px 6px; }
+.feature .ring { width: 100%; display: block; margin: 0 auto 24px; }
+.feature .ring img { aspect-ratio: 1 / 1; }
 .feature h3 { margin-bottom: 10px; }
 .feature p { color: var(--ink-soft); font-size: .98rem; max-width: 30ch; margin-inline: auto; }
 .feature .card-link { margin-top: 18px; }
@@ -270,8 +273,8 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
 .split--rev > .split-media { order: 2; }
 @media (max-width: 860px) { .split, .split--rev { grid-template-columns: 1fr; } .split--rev > .split-media { order: 0; } }
-.split-media img { border-radius: var(--radius); box-shadow: var(--shadow-soft); }
-.split-media .ring { width: min(78%, 380px); display: block; margin-inline: auto; }
+.split-media img { width: 100%; border-radius: var(--radius); box-shadow: 0 26px 54px -26px rgba(40, 44, 60, .45); }
+.split-media .ring { width: 100%; display: block; margin-inline: auto; }
 
 /* ---------- Stats ---------- */
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
