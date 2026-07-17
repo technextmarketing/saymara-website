@@ -212,6 +212,9 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--rose); }
 .btn:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 3px; }
 .btn--ghost { background: transparent; color: var(--plum-deep); border: 2px solid var(--gold); box-shadow: none; }
 .btn--ghost:hover { background: linear-gradient(120deg, var(--rose), var(--rose-soft)); background-size: 200% 100%; border-color: transparent; color: #fff; }
+/* Ghost buttons over dark hero backgrounds need light text for contrast */
+.page-hero .btn--ghost, .hero--cover .btn--ghost, .hero .btn--ghost { color: #fff; border-color: rgba(255,255,255,.75); }
+.page-hero .btn--ghost:hover, .hero--cover .btn--ghost:hover, .hero .btn--ghost:hover { color: #fff; border-color: transparent; }
 .btn--light { background: #FFFFFF; color: var(--plum-deep); box-shadow: 0 12px 26px -14px rgba(0,0,0,.3); }
 .btn--light::before { color: var(--rose); }
 .btn--light:hover { background: linear-gradient(120deg, var(--rose), var(--rose-soft)); color: #fff; }
