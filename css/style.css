@@ -781,3 +781,17 @@ font { background: transparent !important; box-shadow: none !important; }
 .profile-contact b { display: block; color: var(--plum-deep); font-family: var(--font-body); font-weight: 700; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 2px; }
 .contact-form-card { background: #fff; border: 1px solid rgba(192,135,27,.2); border-radius: var(--radius); box-shadow: 0 22px 48px -26px rgba(40,44,60,.4); padding: clamp(26px, 3.4vw, 42px); }
 .contact-map { border: 0; width: 100%; height: clamp(260px, 38vw, 420px); border-radius: var(--radius); filter: grayscale(.2) contrast(1.02); }
+
+/* ============================================================
+   Flat look — remove drop shadows on images and cards (hover lift kept)
+   ============================================================ */
+.card, .card:hover,
+.pcard, .pcard:hover,
+.tcard, .tcard:hover,
+.svc-box, .svc-item:hover .svc-box,
+.profile-card, .contact-form-card,
+.evt-reg, .evt-fact, .evt-fact:hover,
+.ico-badge, .feature:hover .ico-badge, .card:hover .ico-badge,
+.banner, .gallery-grid figure,
+.ring img, .split-media img, .hero-cover-img, .profile-avatar,
+.svc-media img { box-shadow: none; }
