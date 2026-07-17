@@ -426,16 +426,8 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--rose); }
 .breadcrumb { font-size: .82rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.78); margin-bottom: 18px; }
 .breadcrumb a { color: var(--gold-soft); }
 .breadcrumb a:hover { color: #fff; }
-/* scroll cue */
-.page-hero .scroll-cue, .hero--cover .scroll-cue {
-  position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 3;
-  width: 26px; height: 42px; border: 2px solid rgba(255,255,255,.6); border-radius: 14px;
-}
-.page-hero .scroll-cue::before, .hero--cover .scroll-cue::before {
-  content: ""; position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px;
-  background: #fff; border-radius: 2px; animation: scrollcue 1.6s ease-in-out infinite;
-}
-@keyframes scrollcue { 0%{opacity:0;transform:translateY(0)} 40%{opacity:1} 80%{opacity:0;transform:translateY(12px)} 100%{opacity:0} }
+/* scroll cue — removed by request */
+.scroll-cue { display: none !important; }
 @media (max-width: 720px) { .page-hero { min-height: 92vh; padding-top: 100px; } }
 
 /* ---------- Gallery ---------- */
