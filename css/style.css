@@ -247,8 +247,8 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 
 /* Plain centered feature column — no card box (big bold image above the copy) */
 .feature { text-align: center; padding: 4px 6px; }
-.feature .ring { width: 100%; display: block; margin: 0 auto 24px; }
-.feature .ring img { aspect-ratio: 1 / 1; }
+.feature .ring { width: 100%; max-width: 300px; display: block; margin: 0 auto 24px; }
+.feature .ring img { aspect-ratio: 1 / 1; border-radius: 50%; }
 .feature h3 { margin-bottom: 10px; }
 .feature p { color: var(--ink-soft); font-size: .98rem; max-width: 30ch; margin-inline: auto; }
 .feature .card-link { margin-top: 18px; }
