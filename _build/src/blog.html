@@ -1,46 +1,36 @@
 blog.html
 Blog — Simply Be! YourSELF | Saymara B. Ryon
-Articole despre transformare conștientă, dezvoltare personală, echilibru și antreprenoriat, scrise de H.M. Iulia Ioana.
+Articole despre transformare conștientă, dezvoltare personală, echilibru, TRE® și antreprenoriat, scrise de H.M. Iulia Ioana. Filtrează după temă sau caută un articol.
 blog
-<section class="hero">
+<section class="page-hero" style="--hero-img:url('images/woman-working-on-a-laptop-J5YMA9W.jpg')">
   <img class="sun" src="images/sol-ceriza.webp" alt="" aria-hidden="true">
-  <div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow">Dare to fly higher</p>
-      <h1>Am nevoie să găsesc <em>claritate</em></h1>
-      <p class="lead mt-2">Aici
-        <span class="rotator">
-          <span class="on">îmi regăsesc direcția</span>
-          <span>iau o decizie importantă</span>
-          <span>mă întorc la mine</span>
-          <span>schimb ceva real</span>
-          <span>eliberez ce nu-mi mai folosește</span>
-          <span>îmi ascult vocea interioară.</span>
-        </span>
-      </p>
-    </div>
-    <div class="hero-media reveal">
-      <span class="ring"><img src="images/woman-working-on-a-laptop-J5YMA9W.jpg" alt="Femeie citind relaxată pe laptop"></span>
-    </div>
+  <div class="wrap">
+    <p class="breadcrumb"><a href="index.html">Acasă</a> · Blog</p>
+    <h1>Gânduri pentru o viață <em>conștientă</em></h1>
+    <p class="lead mt-2">Articole despre transformare, autocunoaștere, echilibru și lucrul cu sinele — scrise din experiență directă. Filtrează după temă sau caută ce te interesează.</p>
+    <span class="scroll-cue" aria-hidden="true"></span>
   </div>
 </section>
 
-<div class="wingline"></div>
-
-<section class="section">
+<section class="section" data-list>
   <div class="wrap">
-    <div class="grid grid--2">
-      <article class="pcard reveal">
-        <div class="pcard-media"><img src="images/IMG_4188.jpg" alt="Grup de participanți la o formare Simply Be!"></div>
-        <div class="pcard-body">
-          <span class="pcard-meta">Comunicare · povești</span>
-          <h3>Poveștile Simply Be! spuse în 6 cuvinte cheie</h3>
-          <p>Astăzi a fost despre povești… și despre cât de mult și de ușor și de frumos ne pot ajuta ele să ne facem auziți, înțeleși, cunoscuți…</p>
-          <a class="card-link" href="blog-povestile-simply-be.html">Citește articolul</a>
-        </div>
-      </article>
-      <article class="pcard reveal">
-        <div class="pcard-media"><img src="images/IMG_4235.jpg" alt="Inimă stilizată din lumină — Dorința Inimii"></div>
+    <div class="list-controls reveal">
+      <div class="filter-bar" role="tablist" aria-label="Filtrează articolele">
+        <button class="filter-btn is-active" type="button" data-filter="all">Toate</button>
+        <button class="filter-btn" type="button" data-filter="autocunoastere">Autocunoaștere</button>
+        <button class="filter-btn" type="button" data-filter="inspiratie">Inspirație</button>
+        <button class="filter-btn" type="button" data-filter="antreprenoriat">Antreprenoriat</button>
+        <button class="filter-btn" type="button" data-filter="comunicare">Comunicare</button>
+      </div>
+      <label class="list-search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" placeholder="Caută un articol…" aria-label="Caută un articol">
+      </label>
+    </div>
+
+    <div class="grid grid--3" data-list-grid>
+      <article class="pcard reveal" data-cat="autocunoastere" data-search="dorința inimii vindecare autocunoaștere evoluție potențial">
+        <div class="pcard-media"><img src="images/IMG_4235.jpg" alt="Inimă stilizată din lumină — Dorința Inimii" loading="lazy"></div>
         <div class="pcard-body">
           <span class="pcard-meta">Autocunoaștere · vindecare</span>
           <h3>Dorința Inimii — secretul unei vieți fericite și împlinite</h3>
@@ -48,8 +38,8 @@ blog
           <a class="card-link" href="blog-dorinta-inimii.html">Citește articolul</a>
         </div>
       </article>
-      <article class="pcard reveal">
-        <div class="pcard-media"><img src="images/Untitled-design9.jpg" alt="Mână ridicată spre soare, cu un halo de lumină"></div>
+      <article class="pcard reveal" data-cat="inspiratie" data-search="lumina interioară solstițiu vară strălucire potențial inspirație">
+        <div class="pcard-media"><img src="images/Untitled-design9.jpg" alt="Mână ridicată spre soare, cu un halo de lumină" loading="lazy"></div>
         <div class="pcard-body">
           <span class="pcard-meta">Inspirație · solstițiu</span>
           <h3>Îmbrățișează lumina radiantă din Interior!</h3>
@@ -57,8 +47,8 @@ blog
           <a class="card-link" href="blog-lumina-din-interior.html">Citește articolul</a>
         </div>
       </article>
-      <article class="pcard reveal">
-        <div class="pcard-media"><img src="images/woman-working-on-a-laptop-J5YMA9W.jpg" alt="Femeie antreprenor lucrând de acasă"></div>
+      <article class="pcard reveal" data-cat="antreprenoriat" data-search="mame antreprenor succes maternitate business echilibru timp">
+        <div class="pcard-media"><img src="images/woman-working-on-a-laptop-J5YMA9W.jpg" alt="Femeie antreprenor lucrând de acasă" loading="lazy"></div>
         <div class="pcard-body">
           <span class="pcard-meta">Antreprenoriat · maternitate</span>
           <h3>10 lucruri pe care Mamele Antreprenor de Succes le fac diferit</h3>
@@ -66,6 +56,17 @@ blog
           <a class="card-link" href="blog-mame-antreprenor.html">Citește articolul</a>
         </div>
       </article>
+      <article class="pcard reveal" data-cat="comunicare" data-search="povești simply be șase cuvinte comunicare hemingway claritate">
+        <div class="pcard-media"><img src="images/IMG_4188.jpg" alt="Grup de participanți la o formare Simply Be!" loading="lazy"></div>
+        <div class="pcard-body">
+          <span class="pcard-meta">Comunicare · povești</span>
+          <h3>Poveștile Simply Be! spuse în 6 cuvinte cheie</h3>
+          <p>Astăzi a fost despre povești… și despre cât de mult, de ușor și de frumos ne pot ajuta ele să ne facem auziți, înțeleși, cunoscuți…</p>
+          <a class="card-link" href="blog-povestile-simply-be.html">Citește articolul</a>
+        </div>
+      </article>
     </div>
+
+    <p class="center mt-3 reveal" style="color:var(--ink-soft);" data-list-empty hidden>Niciun articol pentru această căutare — încearcă alt termen sau <a href="contact.html">scrie-mi</a> ce temă te-ar interesa.</p>
   </div>
 </section>

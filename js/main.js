@@ -123,6 +123,85 @@
   });
 
   /* ============================================================
+     Filterable + searchable card lists (blog, events)
+     Markup: a wrapper [data-list] containing .filter-btn[data-filter],
+     an optional .list-search input, a [data-list-grid] of .pcard[data-cat],
+     and an optional [data-list-empty] message.
+     ============================================================ */
+  function srNorm(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  document.querySelectorAll('[data-list]').forEach(function (root) {
+    var grid = root.querySelector('[data-list-grid]');
+    if (!grid) return;
+    var empty = root.querySelector('[data-list-empty]');
+    var searchInput = root.querySelector('.list-search input');
+    var filterBtns = [].slice.call(root.querySelectorAll('.filter-btn'));
+    var cards = [].slice.call(grid.querySelectorAll('.pcard'));
+    var activeFilter = 'all', query = '';
+    function apply() {
+      var shown = 0;
+      cards.forEach(function (c) {
+        var cats = (c.getAttribute('data-cat') || '').split(' ');
+        var matchF = activeFilter === 'all' || cats.indexOf(activeFilter) !== -1;
+        var hay = srNorm(c.getAttribute('data-search') || c.textContent);
+        var matchQ = !query || hay.indexOf(query) !== -1;
+        var show = matchF && matchQ;
+        c.hidden = !show; if (show) shown++;
+      });
+      if (empty) empty.hidden = shown !== 0;
+    }
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        filterBtns.forEach(function (x) { x.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        activeFilter = btn.getAttribute('data-filter') || 'all';
+        apply();
+      });
+    });
+    if (searchInput) searchInput.addEventListener('input', function () { query = srNorm(searchInput.value.trim()); apply(); });
+    apply();
+  });
+
+  /* ============================================================
+     Countdown timers (event detail pages)
+     Markup: [data-countdown][data-deadline="ISO"] with children
+     [data-cd-days], [data-cd-hours], [data-cd-mins], [data-cd-secs].
+     ============================================================ */
+  document.querySelectorAll('[data-countdown]').forEach(function (el) {
+    var deadline = new Date(el.getAttribute('data-deadline'));
+    if (isNaN(deadline.getTime())) return;
+    var d = el.querySelector('[data-cd-days]'), h = el.querySelector('[data-cd-hours]'),
+        m = el.querySelector('[data-cd-mins]'), s = el.querySelector('[data-cd-secs]');
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function setN(node, val) { if (!node || node.textContent === val) return; node.textContent = val; node.classList.remove('c-flip'); void node.offsetWidth; node.classList.add('c-flip'); }
+    function tick() {
+      var diff = deadline - new Date();
+      if (diff <= 0) { el.innerHTML = '<p style="color:var(--gold-soft);font-weight:700;font-size:1rem">Acest eveniment a început!</p>'; return; }
+      setN(d, pad(Math.floor(diff / 86400000)));
+      setN(h, pad(Math.floor(diff % 86400000 / 3600000)));
+      setN(m, pad(Math.floor(diff % 3600000 / 60000)));
+      setN(s, pad(Math.floor(diff % 60000 / 1000)));
+      setTimeout(tick, 1000);
+    }
+    tick();
+  });
+
+  /* Event registration forms — mailto + inline success box */
+  document.querySelectorAll('form[data-register]').forEach(function (form) {
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var fields = [];
+      form.querySelectorAll('input, textarea').forEach(function (f) {
+        if (f.name && f.value) fields.push(f.name + ': ' + f.value);
+      });
+      var subj = form.getAttribute('data-subject') || 'Înscriere eveniment — saymararyon.com';
+      window.location.href = 'mailto:contact@saymararyon.com?subject=' +
+        encodeURIComponent(subj) + '&body=' + encodeURIComponent(fields.join('\n'));
+      var box = form.parentNode.querySelector('.reg-success');
+      if (box) { form.style.display = 'none'; box.classList.add('show'); }
+    });
+  });
+
+  /* ============================================================
      Simply Be! assistant — lightweight scripted chat.
      Suggested questions refresh after each answer and never repeat.
      ============================================================ */
