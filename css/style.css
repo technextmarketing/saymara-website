@@ -368,6 +368,8 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--rose); }
 .acc summary::after { content: "+"; font-family: var(--font-body); font-size: 1.4rem; color: var(--gold); transition: transform .3s; flex: none; }
 .acc[open] summary::after { transform: rotate(45deg); }
 .acc-body { padding: 0 26px 26px; color: var(--ink-soft); }
+.acc-logo { display: flex; align-items: center; justify-content: center; padding: 12px; align-self: center; }
+.acc-logo img { max-width: 260px; width: 100%; height: auto; object-fit: contain; border-radius: 0; box-shadow: none; }
 .acc-body p + p { margin-top: 12px; }
 .acc-body ul { margin: 12px 0 0 20px; }
 .acc-body li + li { margin-top: 6px; }
