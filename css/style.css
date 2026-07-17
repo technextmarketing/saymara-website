@@ -23,7 +23,8 @@
   --wing: linear-gradient(90deg, #E8B84B 0%, #E0705F 25%, #C94F6D 50%, #7A5C93 75%, #3E8FB0 100%);
   --shadow-soft: 0 16px 36px -20px rgba(40, 44, 60, .20);
   --radius: 10px;          /* cards: less-rounded corners */
-  --font-display: 'Poppins', 'Segoe UI', sans-serif;
+  --font-display: 'Caveat', 'Segoe UI', cursive;
+  --font-sans: 'Poppins', 'Segoe UI', sans-serif;
   --font-body: 'Karla', 'Segoe UI', sans-serif;
   --font-hand: 'Caveat', cursive;
   --wrap: 1180px;
@@ -51,11 +52,11 @@ a { color: var(--rose); text-decoration: none; transition: color .25s; }
 a:hover { color: var(--plum); }
 a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
 
-h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; line-height: 1.15; color: var(--plum-deep); }
-h1 { font-size: clamp(2.4rem, 5.5vw, 4.2rem); }
-h2 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); }
-h3 { font-size: clamp(1.35rem, 2.2vw, 1.75rem); }
-h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
+h1, h2, h3, .display { font-family: var(--font-display); font-weight: 700; line-height: 1.06; color: var(--plum-deep); letter-spacing: .005em; }
+h1 { font-size: clamp(3rem, 7vw, 5.4rem); }
+h2 { font-size: clamp(2.4rem, 5vw, 3.8rem); }
+h3 { font-size: clamp(1.7rem, 2.8vw, 2.2rem); }
+h1 em, h2 em, h3 em { font-style: normal; color: var(--rose); }
 
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
 .section { padding: clamp(56px, 6.2vw, 96px) 0; position: relative; }
@@ -164,7 +165,7 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 .hero-copy { max-width: 640px; }
 .hero-copy .eyebrow { color: rgba(255,255,255,.92); }
 .hero-copy .eyebrow::before { filter: drop-shadow(0 1px 2px rgba(0,0,0,.4)); }
-.hero-copy h1 { color: #fff; font-size: clamp(2rem, 3.5vw, 3.35rem); line-height: 1.2; text-shadow: 0 2px 20px rgba(0,0,0,.3); }
+.hero-copy h1 { color: #fff; font-size: clamp(2.8rem, 5.2vw, 4.6rem); line-height: 1.04; text-shadow: 0 2px 20px rgba(0,0,0,.3); }
 .hero-copy h1 em { color: var(--gold-soft); }
 .hero-copy .rotator { color: var(--gold-soft); }
 @media (max-width: 720px) {
@@ -386,7 +387,7 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--rose); }
 }
 .page-hero > .wrap { position: relative; z-index: 2; }
 .page-hero .sun { display: none; }
-.page-hero h1 { max-width: 15em; color: #fff; font-size: clamp(2.3rem, 4.6vw, 3.7rem); text-shadow: 0 2px 22px rgba(0,0,0,.32); }
+.page-hero h1 { max-width: 15em; color: #fff; font-size: clamp(3rem, 6vw, 5rem); line-height: 1.03; text-shadow: 0 2px 22px rgba(0,0,0,.32); }
 .page-hero h1 em { color: var(--gold-soft); }
 .page-hero .rotator { color: var(--gold-soft); }
 .page-hero .lead { color: rgba(255,255,255,.92); }
@@ -685,3 +686,98 @@ font { background: transparent !important; box-shadow: none !important; }
 .reg-success svg { width: 46px; height: 46px; stroke: var(--rose); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .reg-success h4 { font-family: var(--font-display); font-size: 1.3rem; color: var(--plum-deep); margin: 10px 0 6px; }
 .reg-success p { color: var(--ink-soft); font-size: .95rem; }
+
+/* ============================================================
+   Caveat-title readability overrides — keep data/UI in sans
+   ============================================================ */
+.c-n { font-family: var(--font-sans); font-weight: 700; }
+.stat b { font-family: var(--font-sans); }
+.pcard-body h3 { font-size: clamp(1.45rem, 2vw, 1.7rem); line-height: 1.05; }
+.card h3 { line-height: 1.05; }
+.acc summary { line-height: 1.1; }
+
+/* ============================================================
+   Home services — reference style: framed circle + white title box
+   ============================================================ */
+.svc-grid { align-items: start; }
+.svc-item { display: block; text-align: center; text-decoration: none; }
+.svc-media { position: relative; overflow: visible; transition: transform .4s cubic-bezier(.34,1.4,.64,1); }
+.svc-media img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; border-radius: 0; box-shadow: none; }
+.svc-item:hover .svc-media { transform: translateY(-6px) scale(1.03); }
+.svc-box {
+  position: relative; z-index: 2; margin: -34px auto 0; max-width: 88%;
+  background: #fff; border-radius: 8px; padding: 16px 14px;
+  box-shadow: 0 16px 34px -18px rgba(40,44,60,.32);
+  transition: transform .35s cubic-bezier(.34,1.4,.64,1), box-shadow .35s;
+}
+.svc-item:hover .svc-box { transform: translateY(-4px); box-shadow: 0 24px 44px -18px rgba(40,44,60,.4); }
+.svc-box h3 { font-size: clamp(1.55rem, 2vw, 1.95rem); line-height: 1.02; color: var(--plum-deep); }
+.svc-box .svc-more { display: inline-block; margin-top: 4px; font-family: var(--font-body); font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+.svc-item:hover .svc-box .svc-more { color: var(--rose); }
+
+/* ============================================================
+   "Come to our tribe" — text left, collage image bleeds to right edge
+   ============================================================ */
+.tribe { padding: 0; overflow: hidden; }
+.tribe-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+.tribe-text { padding: clamp(48px, 7vw, 96px) clamp(24px, 4vw, 56px); max-width: 660px; margin-left: auto; align-self: center; }
+.tribe-media { position: relative; min-height: 420px; }
+.tribe-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 0; box-shadow: none; }
+@media (max-width: 860px) {
+  .tribe-grid { grid-template-columns: 1fr; }
+  .tribe-text { margin: 0 auto; text-align: center; }
+  .tribe-media { min-height: 340px; order: -1; }
+}
+
+/* ============================================================
+   Extra interactivity — links, nav, cards
+   ============================================================ */
+/* Animated underline on prose / content links */
+.prose a:not(.btn), .evt-main a:not(.btn), .acc-body a, .footer-brand p a { position: relative; }
+.prose a:not(.btn)::after, .evt-main a:not(.btn)::after, .acc-body a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px;
+  background: var(--rose); transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
+}
+.prose a:not(.btn):hover::after, .evt-main a:not(.btn):hover::after, .acc-body a:hover::after { transform: scaleX(1); }
+/* Nav link underline grow */
+.nav a:not(.nav-cta) { position: relative; }
+.nav a:not(.nav-cta)::after {
+  content: ""; position: absolute; left: 12px; right: 12px; bottom: 4px; height: 2px;
+  background: var(--rose); transform: scaleX(0); transform-origin: center; transition: transform .28s ease; border-radius: 2px;
+}
+.nav a:not(.nav-cta):hover::after, .nav a.is-active:not(.nav-cta)::after { transform: scaleX(1); }
+@media (max-width: 1040px) { .nav a:not(.nav-cta)::after { display: none; } }
+/* Photo cards: image zoom already exists; add lift + link arrow nudge */
+.pcard { transition: transform .3s cubic-bezier(.34,1.4,.64,1), box-shadow .3s; }
+.pcard:hover { box-shadow: 0 28px 52px -24px rgba(40,44,60,.34); }
+/* Info-strip / evt-fact hover */
+.evt-fact { transition: transform .25s, box-shadow .25s, border-color .25s; }
+.evt-fact:hover { transform: translateY(-3px); box-shadow: 0 16px 30px -18px rgba(40,44,60,.3); border-color: var(--gold); }
+/* Social icons pop */
+.footer-social a svg { transition: transform .25s; }
+.footer-social a:hover svg { transform: scale(1.15); }
+
+/* ============================================================
+   Contact page — profile card + form
+   ============================================================ */
+.contact-grid { display: grid; grid-template-columns: minmax(300px, 400px) 1fr; gap: clamp(28px, 4vw, 52px); align-items: start; }
+@media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+.profile-card { background: #fff; border: 1px solid rgba(192,135,27,.2); border-radius: var(--radius); box-shadow: 0 22px 48px -26px rgba(40,44,60,.4); overflow: hidden; }
+.profile-cover { height: 116px; background: linear-gradient(120deg, var(--rose) 0%, var(--coral) 60%, var(--coral-deep) 100%); }
+.profile-avatar { width: 138px; height: 138px; border-radius: 50%; border: 5px solid #fff; object-fit: cover; display: block; margin: -76px auto 0; box-shadow: 0 14px 32px -14px rgba(0,0,0,.4); }
+.profile-body { padding: 14px 26px 28px; text-align: center; }
+.profile-body h2 { font-size: clamp(1.9rem,3vw,2.4rem); line-height: 1; }
+.profile-role { font-size: .82rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-top: 6px; }
+.profile-bio { font-size: .95rem; color: var(--ink-soft); margin-top: 12px; }
+.profile-social { display: flex; gap: 10px; justify-content: center; margin: 18px 0 4px; }
+.profile-social a { width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--blush); border: 1px solid rgba(192,135,27,.3); transition: transform .25s, background .25s, border-color .25s; }
+.profile-social a:hover { background: var(--rose); border-color: var(--rose); transform: translateY(-3px); }
+.profile-social svg { width: 17px; height: 17px; fill: var(--plum-deep); transition: fill .25s; }
+.profile-social a:hover svg { fill: #fff; }
+.profile-contact { list-style: none; text-align: left; margin-top: 18px; }
+.profile-contact li { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px solid rgba(192,135,27,.16); font-size: .93rem; color: var(--ink-soft); }
+.profile-contact li:first-child { border-top: none; }
+.profile-contact .ico { flex: none; width: 20px; height: 20px; color: var(--rose); margin-top: 1px; }
+.profile-contact b { display: block; color: var(--plum-deep); font-family: var(--font-body); font-weight: 700; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 2px; }
+.contact-form-card { background: #fff; border: 1px solid rgba(192,135,27,.2); border-radius: var(--radius); box-shadow: 0 22px 48px -26px rgba(40,44,60,.4); padding: clamp(26px, 3.4vw, 42px); }
+.contact-map { border: 0; width: 100%; height: clamp(260px, 38vw, 420px); border-radius: var(--radius); filter: grayscale(.2) contrast(1.02); }
