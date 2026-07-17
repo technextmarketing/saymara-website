@@ -403,6 +403,8 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--rose); }
   background-image: var(--hero-img, none); background-size: cover; background-position: center;
   transform: scale(1.04);
 }
+/* When a hero has a background video, drop the residual --hero-img layer (video + its poster cover it) */
+.page-hero:has(.hero-video)::before { display: none; }
 .page-hero::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(95deg, rgba(34,32,44,.84) 0%, rgba(34,32,44,.55) 45%, rgba(34,32,44,.25) 100%);
