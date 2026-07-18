@@ -700,23 +700,23 @@ font { background: transparent !important; box-shadow: none !important; }
 
 /* Home — featured upcoming event (countdown + thumbnail) */
 .up-event-section > .wrap { max-width: 1340px; }
-.up-event { display: grid; grid-template-columns: 1.35fr 1fr; gap: 0; align-items: center; background: var(--blush); border: 1px solid rgba(163,116,138,.16); border-radius: 20px; overflow: hidden; }
-.up-event-media { position: relative; display: block; overflow: hidden; aspect-ratio: 16 / 9; align-self: center; }
-.up-event-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
+.up-event { display: grid; grid-template-columns: 1.5fr 1fr; gap: 0; align-items: stretch; background: var(--blush); border: 1px solid rgba(163,116,138,.16); border-radius: 20px; overflow: hidden; }
+.up-event-media { position: relative; display: block; overflow: hidden; min-height: 100%; background: #fdb61e; }
+.up-event-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; transition: transform .6s ease; }
 .up-event-media:hover img { transform: scale(1.05); }
 .up-event-badge { position: absolute; top: 16px; left: 16px; background: var(--rose); color: #fff; font-family: var(--font-body); font-weight: 700; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; }
 .up-event + .up-event { margin-top: clamp(22px, 3vw, 40px); }
-.up-event-body { padding: clamp(28px, 3.5vw, 48px); align-self: center; }
+.up-event-body { padding: clamp(24px, 3vw, 40px); align-self: center; }
 .up-event-body h2, .up-event-body h3 { margin: 6px 0 10px; }
 .up-event-body h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.08; }
 .up-event-meta { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--plum-deep); font-size: .95rem; margin-bottom: 10px; }
 .up-event-meta .ico { width: 18px; height: 18px; stroke: var(--rose); flex: none; }
-.up-countdown { margin: 22px 0 26px; }
+.up-countdown { margin: 18px 0 20px; }
 .up-countdown .c-unit { background: #fff; border-color: rgba(163,116,138,.2); }
 .up-countdown .c-n { color: var(--rose); }
 .up-countdown .c-l { color: var(--ink-soft); }
 .up-countdown .c-sep { color: rgba(163,116,138,.5); }
-@media (max-width: 760px) { .up-event { grid-template-columns: 1fr; } .up-event-media { aspect-ratio: 16 / 9; } }
+@media (max-width: 760px) { .up-event { grid-template-columns: 1fr; } .up-event-media { min-height: 0; aspect-ratio: 16 / 9; } }
 
 /* ============================================================
    Event detail layout (main + sticky register sidebar)
