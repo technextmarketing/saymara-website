@@ -338,6 +338,7 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--rose); }
 @media (max-width: 860px) { .split, .split--rev { grid-template-columns: 1fr; } .split--rev > .split-media { order: 0; } }
 .split-media img { width: 100%; border-radius: var(--radius); box-shadow: none; }
 .split-media .ring { width: 100%; display: block; margin-inline: auto; }
+.split-media--badge .ring { max-width: 340px; }
 
 /* ---------- Stats ---------- */
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
