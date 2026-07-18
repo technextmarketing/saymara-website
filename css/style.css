@@ -373,6 +373,19 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--rose); }
 .acc-body { padding: 0 26px 26px; color: var(--ink-soft); }
 .acc-logo { display: flex; align-items: center; justify-content: center; padding: 12px; align-self: center; }
 .acc-logo img { max-width: 240px; width: 100%; height: auto; object-fit: contain; border-radius: 0; box-shadow: none; }
+/* Methods — masonry card grid (replaces the accordion template) */
+.method-cols { column-count: 2; column-gap: clamp(20px, 3vw, 30px); margin-top: clamp(24px, 3vw, 36px); }
+.method-card { break-inside: avoid; -webkit-column-break-inside: avoid; page-break-inside: avoid; margin: 0 0 clamp(20px, 3vw, 28px); background: #fff; border: 1px solid rgba(184,134,45,.18); border-radius: var(--radius); padding: clamp(22px, 2.6vw, 30px); transition: transform .3s cubic-bezier(.34,1.4,.64,1), border-color .3s; }
+.method-card:hover { transform: translateY(-4px); border-color: rgba(192,135,27,.5); }
+.method-card-logo { height: 42px; width: auto; max-width: 160px; object-fit: contain; object-position: left center; display: block; margin-bottom: 16px; box-shadow: none; }
+.method-card h3 { font-family: var(--font-body); font-weight: 700; font-size: 1.14rem; line-height: 1.22; color: var(--plum-deep); margin-bottom: 10px; }
+.method-card p { color: var(--ink-soft); font-size: .95rem; line-height: 1.55; }
+.method-card p + p { margin-top: 10px; }
+.method-card ul { margin: 10px 0 0 18px; color: var(--ink-soft); font-size: .93rem; }
+.method-card li + li { margin-top: 5px; }
+.method-card .hand { margin-top: 12px; }
+@media (max-width: 760px) { .method-cols { column-count: 1; } }
+
 /* Consistent placement for all media inside accordion panels */
 .acc-body .split { align-items: center; gap: clamp(24px, 4vw, 48px); margin-top: 4px; }
 .acc-body .split > img { max-width: 360px; width: 100%; height: auto; max-height: 300px; object-fit: cover; border-radius: var(--radius); display: block; margin-inline: auto; }
