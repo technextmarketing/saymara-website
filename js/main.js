@@ -41,6 +41,43 @@
     });
   })();
 
+  /* Method tabs — switch panels + deep-link from URL hash (e.g. despre.html#tre) */
+  (function () {
+    var tablist = document.querySelector('.method-tablist');
+    if (!tablist) return;
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.method-tab'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.method-panel'));
+    function activate(id, doScroll) {
+      var found = false;
+      panels.forEach(function (p) { var on = p.id === id; p.classList.toggle('is-active', on); if (on) found = true; });
+      if (!found) return false;
+      tabs.forEach(function (t) {
+        var on = t.getAttribute('data-tab') === id;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      if (doScroll) {
+        var anchor = document.getElementById('instrumente') || tablist;
+        anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      return true;
+    }
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        var id = t.getAttribute('data-tab');
+        activate(id, false);
+        if (history.replaceState) history.replaceState(null, '', '#' + id);
+      });
+    });
+    function fromHash(doScroll) {
+      var h = (location.hash || '').replace('#', '');
+      if (h) return activate(h, doScroll);
+      return false;
+    }
+    fromHash(true);
+    window.addEventListener('hashchange', function () { fromHash(true); });
+  })();
+
   /* Rotating words in heroes */
   document.querySelectorAll('.rotator').forEach(function (rot) {
     var words = rot.querySelectorAll('span');

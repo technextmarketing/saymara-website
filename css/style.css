@@ -374,6 +374,29 @@ h1 em, h2 em, h3 em { font-style: normal; color: var(--rose); }
 .acc-body { padding: 0 26px 26px; color: var(--ink-soft); }
 .acc-logo { display: flex; align-items: center; justify-content: center; padding: 12px; align-self: center; }
 .acc-logo img { max-width: 240px; width: 100%; height: auto; object-fit: contain; border-radius: 0; box-shadow: none; }
+/* Methods — tabbed interface (full detail per method) */
+.method-tabs { margin-top: clamp(24px, 3vw, 36px); }
+.method-tablist { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: clamp(28px, 3.5vw, 42px); }
+.method-tab { font-family: var(--font-body); font-weight: 700; font-size: .9rem; padding: 10px 20px; border-radius: 999px; border: 1.5px solid rgba(192,135,27,.4); background: #fff; color: var(--ink); cursor: pointer; transition: background .2s, color .2s, border-color .2s, transform .2s; }
+.method-tab:hover { border-color: var(--gold); color: var(--rose); transform: translateY(-2px); }
+.method-tab.is-active { background: var(--rose); border-color: var(--rose); color: #fff; }
+.method-panel { display: none; }
+.method-panel.is-active { display: block; animation: mpFade .45s ease; }
+@keyframes mpFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.method-panel-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(28px, 4vw, 56px); align-items: start; }
+.method-panel-media { position: sticky; top: 92px; }
+.method-panel-media img { width: 100%; border-radius: var(--radius); box-shadow: none; display: block; }
+.video-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius); margin-top: 16px; background: var(--plum-deep); }
+.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.method-panel-text h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.12; color: var(--plum-deep); margin-bottom: 12px; }
+.method-panel-text h4 { font-family: var(--font-body); font-weight: 700; font-size: 1.02rem; letter-spacing: .01em; color: var(--rose); margin: 24px 0 10px; }
+.method-panel-text p { color: var(--ink-soft); font-size: .98rem; line-height: 1.6; }
+.method-panel-text p + p { margin-top: 12px; }
+.method-panel-text ul { margin: 10px 0 0 20px; color: var(--ink-soft); font-size: .96rem; }
+.method-panel-text li + li { margin-top: 6px; }
+.method-panel-text .btn { margin-top: 24px; }
+@media (max-width: 820px) { .method-panel-grid { grid-template-columns: 1fr; } .method-panel-media { position: static; } }
+
 /* Methods — masonry card grid (replaces the accordion template) */
 .method-cols { column-count: 2; column-gap: clamp(20px, 3vw, 30px); margin-top: clamp(24px, 3vw, 36px); }
 .method-card { break-inside: avoid; -webkit-column-break-inside: avoid; page-break-inside: avoid; margin: 0 0 clamp(20px, 3vw, 28px); background: #fff; border: 1px solid rgba(184,134,45,.18); border-radius: var(--radius); padding: clamp(22px, 2.6vw, 30px); transition: transform .3s cubic-bezier(.34,1.4,.64,1), border-color .3s; }
